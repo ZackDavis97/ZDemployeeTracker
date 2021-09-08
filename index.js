@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const inquirer = require("inquirer");
 const table = require("console.table");
 
@@ -6,7 +6,7 @@ let connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "12345",
+    password: "",
     database: "workdb"
 });
 
@@ -30,7 +30,7 @@ function askQuestions() {
             "Quit"
         ],
         name: "choice"
-    }).then(answer => {
+    }).then(answers => {
         switch (answers.choice) {
             case "add employee":
                 addEmployee()
